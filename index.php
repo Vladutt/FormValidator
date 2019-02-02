@@ -1,7 +1,7 @@
 <?php
 include 'FormValidation.php';
 
-if(isset($_POST['trimite'])){
+if(isset($_POST['send'])){
 
   $formValidation = new FormValidation($_POST);
   $formValidation->setRules([
@@ -10,8 +10,8 @@ if(isset($_POST['trimite'])){
     'password' => 'required|min:8'
   ]);
   $formValidation->setCustomErrors([
-    'username.required' => 'Acest câmp este gol...',
-    'username.min' => 'doar 3' 
+    'username.required' => "custom message for empty value",
+    'username.min' => 'custom message for min 3 characters' 
   ]);
   
   if(!$formValidation->isValidated()){
@@ -37,7 +37,7 @@ if(isset($_POST['trimite'])){
     <input type="text" name="username"> <br> <hr>
     <input type="text" name="email"> <br> <hr>
     <input type="password" name="password"> <br> <hr>
-    <button type="submit" name='trimite'>Trimite</button>
+    <button type="submit" name='send'>Send</button>
   </form>
 </body>
 </html>
