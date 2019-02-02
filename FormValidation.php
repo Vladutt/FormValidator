@@ -1,3 +1,4 @@
+<?php
 class FormValidation {
 
   protected $data = [];
@@ -122,3 +123,4 @@ class FormValidation {
 
 
 }
+?>
