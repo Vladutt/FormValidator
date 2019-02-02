@@ -39,7 +39,7 @@ class FormValidation {
         }
 
       }else{
-        die('nu am găsit acest camp.');
+        die("Can't find this input " . $this->data[$field]);
       }
 
     }
@@ -60,14 +60,14 @@ class FormValidation {
       if(strpos($field, '.') == true){
         $this->customErrors[$field] = $error;
       }else{
-        die('Nu ai speficicat corect inputul pentru care vrei să adaugi mesajul.');
+        die('Be careful how set the errors.');
       }
     }
   }
 
   protected function required($field){
     if(empty($this->data[$field])){
-      $message = 'Acest câmp ' . $field . ' este gol.';
+      $message = 'This field ' . $field . ' is empty.';
       if(empty($this->customErrors[$field.'.required'])){
         $this->newErrors($field, $message); 
       }else{
@@ -78,7 +78,7 @@ class FormValidation {
 
   protected function email($field){
     if(!filter_var($this->data[$field], FILTER_VALIDATE_EMAIL)){
-      $message = 'Acest câmp ' . $field . ' nu este un email valid.';
+      $message = "This field ' . $field . ' doesn't have an valid email.";
       if(empty($this->customErrors[$field.'.email'])){
         $this->newErrors($field, $message); 
       }else{
@@ -89,7 +89,7 @@ class FormValidation {
 
   protected function min($field, $length){
     if(strlen($this->data[$field]) < $length){
-      $message = 'Acest câmp ' . $field . ' necesită cel puțin ' . $length . ' caractere.';
+      $message = 'This field ' . $field . ' needs to have more than ' . $length . ' characters.';
       if(empty($this->customErrors[$field.'.min'])){
         $this->newErrors($field, $message); 
       }else{
@@ -100,7 +100,7 @@ class FormValidation {
 
   protected function max($field, $length){
     if(strlen($this->data[$field]) > $length){
-      $message = 'Acest câmp ' . $field . ' necesită cel mult ' . $length . ' caractere.';
+      $message = 'This field ' . $field . ' needs to have max ' . $length . ' characters.';
       if(empty($this->customErrors[$field.'.max'])){
         $this->newErrors($field, $message); 
       }else{
@@ -123,4 +123,4 @@ class FormValidation {
 
 
 }
-?>
+ 
