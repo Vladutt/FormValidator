@@ -68,10 +68,10 @@ class FormValidation {
   protected function required($field){
     if(empty($this->data[$field])){
       $message = 'This field ' . $field . ' is empty.';
-      if(empty($this->customErrors[$field.'.required'])){
+      if(empty($this->customErrors[$field.__FUNCTION__])){
         $this->newErrors($field, $message); 
       }else{
-        $this->newErrors($field, $this->customErrors[$field.'.required']);
+        $this->newErrors($field, $this->customErrors[$field.__FUNCTION__]);
       }
     }
   }
@@ -79,10 +79,10 @@ class FormValidation {
   protected function email($field){
     if(!filter_var($this->data[$field], FILTER_VALIDATE_EMAIL)){
       $message = "This field ' . $field . ' doesn't have an valid email.";
-      if(empty($this->customErrors[$field.'.email'])){
+      if(empty($this->customErrors[$field.__FUNCTION__])){
         $this->newErrors($field, $message); 
       }else{
-        $this->newErrors($field, $this->customErrors[$field.'.email']);
+        $this->newErrors($field, $this->customErrors[$field.__FUNCTION__]);
       }
     }
   }
@@ -90,10 +90,10 @@ class FormValidation {
   protected function min($field, $length){
     if(strlen($this->data[$field]) < $length){
       $message = 'This field ' . $field . ' needs to have more than ' . $length . ' characters.';
-      if(empty($this->customErrors[$field.'.min'])){
+      if(empty($this->customErrors[$field.__FUNCTION__])){
         $this->newErrors($field, $message); 
       }else{
-        $this->newErrors($field, $this->customErrors[$field.'.min']);
+        $this->newErrors($field, $this->customErrors[$field.__FUNCTION__]);
       }
     }
   }
@@ -101,10 +101,10 @@ class FormValidation {
   protected function max($field, $length){
     if(strlen($this->data[$field]) > $length){
       $message = 'This field ' . $field . ' needs to have max ' . $length . ' characters.';
-      if(empty($this->customErrors[$field.'.max'])){
+      if(empty($this->customErrors[$field.__FUNCTION__])){
         $this->newErrors($field, $message); 
       }else{
-        $this->newErrors($field, $this->customErrors[$field.'.max']);
+        $this->newErrors($field, $this->customErrors[$field.__FUNCTION__]);
       }
     }
   }
